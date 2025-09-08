@@ -90,7 +90,7 @@ const pizzaData = [
     ingredients: "Shrimp, zucchini, and tomato sauce",
     price: 17,
     photoName: "pizzas/focaccia.jpg",
-    soldOut: false,
+    soldOut: true,
   },
   {
     name: "Pizza Quattro Formaggi",
@@ -111,15 +111,19 @@ function Header() {
 
 function Menu() {
   return (
-    <div className="menu">
-      <h2>Our Menu</h2>
-
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaobj={pizza} key={pizza.name} />
-        ))}
-      </ul>
-      {/* <Pizza
+    <>
+      <div className="menu">
+        <h2>Our Menu</h2>
+        <p>
+          Authentic Italian cuisine, 6 creative dishes to choose from. All from
+          our stone oven, all organic. all delicious
+        </p>
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizzaobj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+        {/* <Pizza
         name="Prosciutto"
         ingredients="Tomato, mozarella, mushrooms, and onion"
         price="12"
@@ -132,21 +136,24 @@ function Menu() {
         price="15"
         photoName="pizzas/salamino.jpg"
       /> */}
-    </div>
+      </div>
+    </>
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizzaobj }) {
   //const d = getPizza("Pizza Prosciutto");
   return (
-    <li className="pizza">
-      <img src={props.pizzaobj.photoName} alt={props.pizzaobj.name} />
-      <div>
-        <h3>{props.pizzaobj.name}</h3>
-        <p>{props.pizzaobj.ingredients}</p>
-        <span>{props.pizzaobj.price}</span>
-      </div>
-    </li>
+    <>
+      <li className={`pizza ${pizzaobj.soldOut ? "sold-out" : ""}`}>
+        <img src={pizzaobj.photoName} alt={pizzaobj.name} />
+        <div>
+          <h3>{pizzaobj.name}</h3>
+          <p>{pizzaobj.ingredients}</p>
+          <span>{pizzaobj.soldOut ? "Sold Out" : pizzaobj.price}</span>
+        </div>
+      </li>
+    </>
   );
 }
 
@@ -174,11 +181,13 @@ function Order(props) {
 
 function App() {
   return (
-    <main className="container">
-      <Header />
-      <Menu />
-      <Footer />
-    </main>
+    <>
+      <main className="container">
+        <Header />
+        <Menu />
+        <Footer />
+      </main>
+    </>
   );
 }
 
