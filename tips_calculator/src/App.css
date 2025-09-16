@@ -1,0 +1,26 @@
+.logo {
+  color: blue;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+  padding: 5px;
+  text-align: center;
+}
+.App {
+  background-color: rgb(27, 185, 132);
+  padding: 20px;
+}
+
+.amount {
+  padding: 3px;
+}
+.tip {
+  padding: 3px;
+}
+.button {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
